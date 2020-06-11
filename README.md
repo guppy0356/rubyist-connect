@@ -35,3 +35,4 @@ MIT license (&copy; 2015 rubyist-connect developers)
 - 興味の対象が似た Rubyist の検索
 - 新着 Rubyist の通知
 - 勉強会情報の共有や管理、サポート（例えば、勉強会毎のリストを作成し、勉強会に参加する Rubyist を管理する）
+
