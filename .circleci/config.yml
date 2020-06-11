@@ -6,7 +6,8 @@ jobs:
         - image: circleci/buildpack-deps 
       steps:
         - checkout
-        - setup_remote_docker
+        - setup_remote_docker:
+            docker_layer_caching: true
         - run:
             name: Build Docker image
             command: docker-compose build
@@ -16,11 +17,15 @@ jobs:
         - image: circleci/buildpack-deps
       steps:
         - checkout
-        - setup_remote_docker
+        - setup_remote_docker:
+            docker_layer_caching: true
+        - run:
+            name: Start containers
+            command: |
+              docker-compose up -d
         - run:
             name: Run RSpec
             command: |
-              docker-compose up -d
               docker-compose exec web bundle exec rspec
 
 workflows:
