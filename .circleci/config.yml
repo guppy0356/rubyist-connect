@@ -9,7 +9,7 @@ jobs:
         - setup_remote_docker
         - run:
             name: Build Docker image
-            command: docker-compose up -d --build
+            command: docker-compose build
 
     test:
       docker:
@@ -19,7 +19,9 @@ jobs:
         - setup_remote_docker
         - run:
             name: Run RSpec
-            command: docker-compose exec web bundle exec rspec
+            command: |
+              docker-compose up -d
+              docker-compose exec web bundle exec rspec
 
 workflows:
   version: 2
