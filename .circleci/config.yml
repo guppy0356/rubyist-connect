@@ -22,9 +22,7 @@ jobs:
         - run:
             name: Start containers
             command: |
-              docker-compose up -d
-              docker-compose ps
-              docker-compose exec web bundle exec rspec
+              docker-compose up
 
 workflows:
   version: 2
