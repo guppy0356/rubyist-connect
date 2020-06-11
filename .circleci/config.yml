@@ -2,23 +2,19 @@ version: 2
 
 jobs:
     build:
-      docker:
-        - image: circleci/buildpack-deps 
+      machine:
+        docker_layer_caching: true
       steps:
         - checkout
-        - setup_remote_docker:
-            docker_layer_caching: true
         - run:
             name: Build Docker image
             command: docker-compose build
 
     test:
-      docker:
-        - image: circleci/buildpack-deps
+      machine:
+        docker_layer_caching: true
       steps:
         - checkout
-        - setup_remote_docker:
-            docker_layer_caching: true
         - run:
             name: Start containers
             command: |
