@@ -30,7 +30,9 @@ jobs:
         - checkout
         - run:
             name: Touch file
-            command: touch hello.txt
+            command: |
+              touch hello.txt
+              exit 1
 
     touch-bye:
       docker:
