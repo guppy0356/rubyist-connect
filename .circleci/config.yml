@@ -24,18 +24,12 @@ jobs:
               docker-compose exec web bundle exec rspec
               mkdir reg_suit
               echo 'hello, world' > reg_suit/hello.txt
-        - persist_to_workspace:
-            root: ./
-            paths:
-              - reg_suit
 
     echo:
       docker:
         - image: circleci/buildpack-deps:stretch
       steps: 
         - checkout
-        - attach_workspace:
-            at: ./
         - run: cat reg_suit/hello.txt
 workflows:
   version: 2
