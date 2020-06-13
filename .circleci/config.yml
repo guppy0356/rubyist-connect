@@ -23,28 +23,6 @@ jobs:
               docker-compose exec web bundle exec rails db:migrate
               docker-compose exec web bundle exec rspec
 
-    touch-hello:
-      docker:
-        - image: cimg/ruby:2.7-node
-      steps:
-        - checkout
-        - run:
-            name: Touch file
-            command: |
-              touch hello.txt
-              exit 1
-
-    touch-bye:
-      docker:
-        - image: cimg/ruby:2.7-node
-      steps:
-        - checkout
-        - run:
-            name: Touch file
-            command: |
-              touch bye.txt
-              ls
-
 workflows:
   version: 2
   build_and_test:
@@ -53,7 +31,3 @@ workflows:
       - test:
           requires:
             - build
-      - touch-hello
-      - touch-bye:
-          requires:
-            - touch-hello
